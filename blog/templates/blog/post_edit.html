@@ -1,0 +1,25 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <div class="container mt-4">
+        <div class="card shadow-sm border-0">
+            <div class="card-header text-white" style="background-color: #e91e63;">  <!-- Rose -->
+                <h2 class="mb-0">New Post</h2>
+            </div>
+            <div class="card-body">
+                <form method="POST" class="post-form">{% csrf_token %}
+                    {% for field in form %}
+                        <div class="mb-3">
+                            <label class="form-label">{{ field.label }}</label>
+                            {{ field }}
+                            {% if field.help_text %}
+                                <small class="text-muted">{{ field.help_text }}</small>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                    <button type="submit" class="btn text-white" style="background-color: #e91e63;">Save</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
